@@ -71,5 +71,12 @@ describe("[unit]", () => {
         })
       ).to.eventually.not.be.undefined;
     });
+
+    describe("[semester]", () => {
+      // it(`should `, async () => {
+      //   const auth = await createAuthentication();
+      //   console.log(await auth.getSchedule());
+      // });
+    });
   });
 });

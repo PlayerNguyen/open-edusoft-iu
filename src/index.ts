@@ -255,15 +255,28 @@ class Schedule {
     const spanLastUpdateElement = htmlBodyElement.querySelector(
       "#ctl00_ContentPlaceHolder1_ctl00_lblNoteUpdateDHQT"
     );
-    const dateExtracted = spanLastUpdateElement?.text.split(" ");
-    if (dateExtracted === undefined) {
+    const extracted = spanLastUpdateElement?.text;
+    if (extracted === undefined) {
+      throw new Error(
+        `The span #ctl00_ContentPlaceHolder1_ctl00_lblNoteUpdateDHQT is not available to parse.`
+      );
+    }
+
+    if (extracted === undefined) {
       throw new Error(`Invalid date extracted value`);
     }
-    const hour = dateExtracted[8];
-    const date = dateExtracted[10].substring(0, dateExtracted[10].length - 1);
+    // Test for hour
+    const hour = extracted
+      .split(" ")
+      .filter((k) => new RegExp("[0-9]+:[0-9]+").test(k))[0];
+    const date = extracted
+      .split(" ")
+      .filter((k) => new RegExp("[0-9]+/[0-9]+/[0-9]+").test(k))[0];
+    const r = date.concat(" ").concat(hour);
+    console.log(r);
 
     // Parse the time by using moment
-    this.lastUpdate = this.extractToMomentDate(date.concat(" ").concat(hour));
+    this.lastUpdate = this.extractToMomentDate(r);
   }
 
   private extractToMomentDate(rawValue: string): moment.Moment {
