@@ -273,7 +273,6 @@ class Schedule {
       .split(" ")
       .filter((k) => new RegExp("[0-9]+/[0-9]+/[0-9]+").test(k))[0];
     const r = date.concat(" ").concat(hour);
-    console.log(r);
 
     // Parse the time by using moment
     this.lastUpdate = this.extractToMomentDate(r);
