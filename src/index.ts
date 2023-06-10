@@ -227,10 +227,10 @@ class Schedule {
 
   constructor(authentication: Authentication, htmlBodyElement: HTMLElement) {
     this.authentication = authentication;
-    this.extractFromHTMLElement(htmlBodyElement);
+    this.extractScheduleFromHTMLElement(htmlBodyElement);
   }
 
-  private extractFromHTMLElement(htmlBodyElement: HTMLElement) {
+  private extractScheduleFromHTMLElement(htmlBodyElement: HTMLElement) {
     // Extract semester list
     const semesterList = htmlBodyElement.querySelectorAll(
       "select#ctl00_ContentPlaceHolder1_ctl00_ddlChonNHHK option"
