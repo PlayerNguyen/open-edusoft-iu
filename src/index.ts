@@ -156,6 +156,8 @@ export class WeekPeriod {
     this.startDate = startDate;
     this.endDate = endDate;
   }
+
+  // public get()
 }
 
 export class Semester {
@@ -261,11 +263,29 @@ class Schedule {
     const date = dateExtracted[10].substring(0, dateExtracted[10].length - 1);
 
     // Parse the time by using moment
-    this.lastUpdate = moment(
-      date.concat(" ").concat(hour),
-      "DD/M/YYYY HH:mm",
-      true
-    );
+    this.lastUpdate = this.extractToMomentDate(date.concat(" ").concat(hour));
+  }
+
+  private extractToMomentDate(rawValue: string): moment.Moment {
+    const _rawValueSplitted = rawValue.split(" ");
+    const datePath = _rawValueSplitted[0].split("/");
+    const hourPath = _rawValueSplitted[1].split(":");
+
+    const day = Number.parseInt(datePath[0]);
+    const month = Number.parseInt(datePath[1]);
+    const year = Number.parseFloat(datePath[2]);
+
+    const hour = Number.parseInt(hourPath[0]);
+    const minute = Number.parseInt(hourPath[1]);
+
+    return moment([
+      year,
+      // Month calculate from 0 to 11
+      month - 1,
+      day,
+      hour,
+      minute,
+    ]);
   }
 
   public getSemester(semester: number, year: number): Semester | undefined {
