@@ -1,6 +1,6 @@
 {
   "name": "open-edusoft-iu",
-  "packageManager": "yarn@3.5.1",
+  "packageManager": "yarn@1.22.19",
   "license": "MIT",
   "scripts": {
     "build": "swc ./src -d ./dist",
