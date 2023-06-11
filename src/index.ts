@@ -315,3 +315,102 @@ class Schedule {
     return this.lastUpdate;
   }
 }
+
+export class SubjectClass {
+  private classId: string;
+
+  constructor(classId: string) {
+    this.classId = classId;
+  }
+
+  public getClassId() {
+    return this.classId;
+  }
+}
+
+export class Subject {
+  private code: string;
+  private name: string;
+  private length: number;
+  private instructor: string;
+  private subjectClass: SubjectClass;
+
+  constructor(
+    code: string,
+    name: string,
+    length: number,
+    instructor: string,
+    subjectClass: SubjectClass
+  ) {
+    this.code = code;
+    this.name = name;
+    this.length = length;
+    this.instructor = instructor;
+    this.subjectClass = subjectClass;
+  }
+
+  public getCode(): string {
+    return this.code;
+  }
+
+  public getName(): string {
+    return this.name;
+  }
+
+  public getLength(): number {
+    return this.length;
+  }
+
+  public getInstructor(): string {
+    return this.instructor;
+  }
+
+  public getSubjectClass() {
+    return this.subjectClass;
+  }
+}
+
+export class Lesson {
+  private subject: Subject;
+  private startTime: Moment;
+  private endTime: Moment;
+  private room: Room;
+
+  constructor(
+    subject: Subject,
+    startTime: Moment,
+    endTime: Moment,
+    room: Room
+  ) {
+    this.subject = subject;
+    this.startTime = startTime;
+    this.endTime = endTime;
+    this.room = room;
+  }
+
+  public getSubject(): Subject {
+    return this.subject;
+  }
+
+  public getStartTime(): Moment {
+    return this.startTime;
+  }
+
+  public getEndTime() {
+    return this.endTime;
+  }
+
+  public getRoom() {
+    return this.room;
+  }
+}
+
+export class Room {
+  private roomId: string;
+  constructor(roomId: string) {
+    this.roomId = roomId;
+  }
+  public getRoomId(): string {
+    return this.roomId;
+  }
+}
